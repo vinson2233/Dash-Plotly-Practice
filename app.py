@@ -6,9 +6,6 @@ import numpy as np
 import pandas as pd
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-colors = {
-    'background': '#d4d1cb',
-}
 
 df = pd.read_csv("data.csv")
 
@@ -27,7 +24,7 @@ def plot_temp(id_temp):
 	        }
 	    )
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+app = dash.Dash(__name__)
 
 def plot1(df):
 	agg = df["status_group"].value_counts()
@@ -36,15 +33,15 @@ def plot1(df):
 	fig = go.Figure(go.Bar(x=status_group,y=status_count))
 	return dcc.Graph(figure=fig)
 
-app.layout = html.Div([
-	    html.Div([plot1(df)]     ,style = {'width':'30%','float':'left','marginLeft':'2%','marginTop':'2%'}),
-	    html.Div([plot_temp("2")],style = {'width':'30%','display': 'inline-block','marginLeft':'3%','marginTop':'2%'}),
-	    html.Div([plot_temp("3")],style = {'width':'30%','float':'right','marginRight':'2%','marginTop':'2%'}),
-	    html.Div([plot_temp("4")],style = {'width':'30%','float':'left','marginLeft':'2%','marginTop':'2%'}),
-	    html.Div([plot_temp("5")],style = {'width':'30%','display': 'inline-block','marginLeft':'3%','marginTop':'2%'}),
-	    html.Div([plot_temp("6")],style = {'width':'30%','float':'right','marginRight':'2%','marginTop':'2%'})
-	    ],style={'backgroundColor':colors["background"]}
+app.layout = html.Div(children = [
+		    html.Div([plot1(df)],className="tabel"),
+		    html.Div([plot_temp("2")],className="tabel"),
+		    html.Div([plot_temp("3")],className="tabel"),
+		    html.Div([plot_temp("4")],className="tabel"),
+		    html.Div([plot_temp("5")],className="tabel"),
+		    html.Div([plot_temp("6")],className="tabel")
+	    ]
     )
-
+    
 if __name__ == '__main__':
     app.run_server(debug=True)

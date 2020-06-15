@@ -1,0 +1,13 @@
+.tabel{
+	width : 30% ;
+	marginTop :2%;
+	float : left;
+}
+
+div:nth-child(2){
+	border-color	: red 
+}
+
+.table>div{
+	display: none;
+}
