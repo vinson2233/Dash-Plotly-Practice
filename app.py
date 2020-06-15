@@ -42,6 +42,6 @@ app.layout = html.Div(children = [
 		    html.Div([plot_temp("6")],className="tabel")
 	    ]
     )
-    
+#Komentar
 if __name__ == '__main__':
     app.run_server(debug=True)
